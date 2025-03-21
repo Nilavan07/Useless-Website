@@ -1,0 +1,136 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    background-color: #87CEEB;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+
+.grass {
+    flex: 1;
+    background: linear-gradient(to bottom, #4CAF50, #3A9D23); 
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+
+.river {
+    flex: 2;
+    background: linear-gradient(to bottom, #1E90FF, #4682B4); 
+    position: relative;
+    overflow: hidden;
+    border-top: 5px solid #3A9D23;
+    border-bottom: 5px solid #3A9D23;
+}
+
+
+.water-flow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 10%, transparent 70%);
+    opacity: 0.8;
+    animation: flow 2s linear infinite;
+}
+
+@keyframes flow {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-10%);
+    }
+}
+
+
+.duck {
+    width: 60px;
+    height: auto;
+    position: absolute;
+    cursor: pointer;
+    bottom: 50px; 
+    left: 50px; 
+    animation: float 2s ease-in-out infinite, moveRight 10s linear infinite;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+@keyframes moveRight {
+    0% {
+        left: -100px;
+    }
+    100% {
+        left: 100vw;
+    }
+}
+
+
+
+.tree {
+    position: relative;
+    width: 30px;
+    height: 120px;
+    background: #8B4513; 
+    border-radius: 10px;
+    margin: 0 20px; 
+    animation: sway 3s infinite ease-in-out;
+}
+
+
+.tree::before,
+.tree::after {
+    content: "";
+    position: absolute;
+    background: #228B22; 
+    border-radius: 50%;
+}
+
+
+.tree::before {
+    width: 100px;
+    height: 60px;
+    bottom: 60px;
+    left: -35px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Second (top) layer of leaves */
+.tree::after {
+    width: 80px;
+    height: 50px;
+    bottom: 100px;
+    left: -25px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tree Sway Animation */
+@keyframes sway {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(2deg);
+    }
+}
